@@ -10,21 +10,21 @@
 			$poundsResult = 0;
 			$kilosResult = 0;
 		
-		    if (isset($_POST['ConverttoPounds']))
+		    if (isset($_POST['ConverttoPounds']) && ($_POST['kilos'] > 0))
 		    {
 		        $kilosResult = $_POST['kilos'];
 		        
 		        $poundsResult = $kilosResult * 2.2;
 		        
-		        echo "<p>" + $kilosResult + " kilos equals " + $poundResult + " pounds.</p>";
+		        echo "<p>" . $kilosResult . " kilos equals " . $poundsResult . " pounds.</p>";
 		    }
-		    elseif (!isset($_POST['ConverttoKilos']))
+		    elseif (isset($_POST['ConverttoKilos']) && ($_POST['pounds'] > 0))
 		    {
-		    	$poundsResult = $_POST['pound'];
+		    	$poundsResult = $_POST['pounds'];
 		    
 		    	$kilosResult = $poundsResult / 2.2;
 		    	
-		    	echo "<p>" + $poundsResult + " pounds equals " + $kilosResult + " kilos.</p>";
+		    	echo "<p>" . $poundsResult . " pounds equals " . $kilosResult . " kilos.</p>";
 		    }
 		    else
 		    {

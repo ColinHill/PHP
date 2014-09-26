@@ -3,28 +3,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-    if (isset($_POST['target']) && isset($_POST['guess']))
-    {
-        $numberTarget = $_POST['target'];
-        $numberGuessed = $_POST['target'];
+if (isset($_POST['target']) && isset($_POST['guess']))
+{
+    $numberTarget = $_POST['target'];
+    $numberGuessed = $_POST['guess'];
 
-        if ($numberGuessed <= $numberTarget)
-        {
-            $message = "Guess Higher";
-        } elseif ($numberGuessed >= $numberTarget)
-        {
-            $message = "Guess Lower";
-        } elseif ($numberGuessed == $numberTarget)
-        {
-            $message = "You got it!";
-        }
-    }
-    else
+    if ($numberGuessed < $numberTarget)
     {
-        $message = "Welcome to my guessing game!";
-        $numberTarget = rand(1,100);
+        $message = "Guess Higher";
+    } elseif ($numberGuessed > $numberTarget)
+    {
+        $message = "Guess Lower";
+    } elseif ($numberGuessed == $numberTarget)
+    {
+        $message = "You got it!";
     }
+}
+else
+{
+    $message = "Welcome to my guessing game!";
+    $numberTarget = rand(1,100);
+}
 ?>
+
 <html>
     <head>
         <title>A PHP number guessing script</title>
