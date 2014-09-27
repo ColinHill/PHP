@@ -34,7 +34,7 @@ else
         <h1>
             <?php print $message ?>
         </h1>
-        <form action="<?php $_SERVER['PHP_SELF'] ?>"  method="post" name="guessinggame">
+        <form action="<?php $_SERVER['PHP_SELF'] ?>"  method="post" name="GuessingGame">
             <p>Number:
                 <input name="guess" type="text">
             </p>
