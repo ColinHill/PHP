@@ -4,7 +4,7 @@
          <title>Lab #3 - Part A</title>
     </head>
     <body>
-    <p></p>
+    <p>Step 1</p>
 
     <table border = "1">
         <th>Film</th><th>Description</th>
