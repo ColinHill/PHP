@@ -12,14 +12,12 @@
             $inches = 0;
             $convertedHeight = 0;
 
-if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['feet']) && isset($_POST['inches']))
+if (isset($_POST['fname']) AND isset($_POST['lname']) AND isset($_POST['feet']) AND isset($_POST['inches']))
 {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $feet = $_POST['feet'];
     $inches = $_POST['inches'];
-
-    $convertedHeight = ((($feet * 12) + ($inches)) * 0.0254);
 
     echo "<p>Your first name is: " . $fname . "</p>";
     echo "<p>Your last name is: " . $lname . "</p>";
