@@ -5,7 +5,7 @@
 </head>
 <body>
 <h3>Part C</h3>
-<form action="blah.php"  method="post" name="HeightConverter">
+<form enctype="multipart/form-data" action="blah.php"  method="post" name="HeightConverter">
     <p>First Name:
         <input name="fname" type="text" value="">
     </p>
@@ -18,9 +18,14 @@
     <p>Height (inches):
         <input name="inches" type="text" value="">
     </p>
+    <hr>
+    <p>
+        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+        Upload a picture: <input name="UserFile" type="file" />
+    </p>
     <p>
         <input name="ConvertHeight" type="submit" value="Submit">
     </p>
-</form>
-</body>
+  </form>
+ </body>
 </html>
