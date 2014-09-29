@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Validation</title>
+    <script src="valadation.js" type="text/javascript"></script>
+</head>
+<body>
+<h3>
+
+    <form name="myForm" id="myForm" method="post" action="LandingPage.html" onsubmit="return validateForm(this.id)">
+        <label id="label1" onfocus="italicText(this.id)">First name
+            <input type="text" name="fname" id="fname" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br>
+        </label>
+        <label>Last name
+            <input type="text" name="lname" id="lname" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br>
+        </label>
+        <label>Address 1
+            <input type="text" name="address1" id="address1" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br>
+        </label>
+        <label>Address 2
+            <input type="text" name="address2" id="address2" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br>
+        </label>
+        <label>Email
+            <input type="text" name="email" id="email" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br><br>
+        </label>
+        <label>Checkbox
+            <input type="checkbox" name="terms" id="terms" /> Accept Terms and Conditions<br><br>
+        </label><span id="checkboxSpan"></span>
+        <input input type="submit" name="submitButton" id="submitButton" value="Submit"/>
+    </form>
+
+</h3>
+
+</body>
+</html>
