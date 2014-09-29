@@ -2,7 +2,7 @@
  * Created by inet2005 on 9/29/14.
  */
 
-function validateForm(fieldID)
+function validateForm()
 {
     if(document.forms["myForm"].fname.value.length ==0)
     {
@@ -34,16 +34,13 @@ function validateForm(fieldID)
         myFormItem.style.borderColor = "Red";
         return false;
     }//end if
-    if(document.forms["myForm"].getElementById("terms").checked == false)
+    else if(!document.getElementById("terms").checked)
     {
-        var myFormItem = document.getElementById("terms");
-        myFormItem.span.color = "red";
-        myFormItem.span.innerHTML = "Must accept terms and conditions.";
-        return false;    }//end if
-    else
-    {
-        return true;
-    }//end else
+        var myFormItem = document.getElementById("checkboxSpan");
+        myFormItem.style.color = "red";
+        myFormItem.innerHTML = " Must accept terms and conditions.";
+        return false;
+    }//end if
 }//end function
 
 function italicText(fieldID)

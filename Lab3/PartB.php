@@ -57,7 +57,7 @@
         <input name="id" type="text">
     </p>
     <p>
-        <input name="" type="submit">
+        <input name="submit" type="submit" value="Delete Actor">
     </p>
    </form>
     <form action="update.php" method="post" name="UpdateActor">
@@ -65,7 +65,7 @@
         <input name="update" type="text">
     </p>
     <p>
-        <input name="" type="submit">
+        <input name="submit" type="submit" value="Update Actor">
     </p>
     </form>
 

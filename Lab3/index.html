@@ -7,8 +7,8 @@
 <body>
 <h3>
 
-    <form name="myForm" id="myForm" method="post" action="LandingPage.html" onsubmit="return validateForm(this.id)">
-        <label id="label1" onfocus="italicText(this.id)">First name
+    <form name="myForm" id="myForm" method="post" action="LandingPage.html" onsubmit="return validateForm()">
+        <label id="label1">First name
             <input type="text" name="fname" id="fname" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br>
         </label>
         <label>Last name
@@ -24,8 +24,8 @@
             <input type="text" name="email" id="email" onfocus="italicText(this.id)" onblur="normalText(this.id)"/><br><br>
         </label>
         <label>Checkbox
-            <input type="checkbox" name="terms" id="terms" /> Accept Terms and Conditions<br><br>
-        </label><span id="checkboxSpan"></span>
+            <input type="checkbox" name="terms" id="terms" /> Accept Terms and Conditions.
+        </label><span id="checkboxSpan"></span><br>
         <input input type="submit" name="submitButton" id="submitButton" value="Submit"/>
     </form>
 
