@@ -22,7 +22,6 @@
                 }
 
             $result = mysqli_query($db,"INSERT INTO actor (first_name, last_name) VALUES ('" . $_POST['fname'] . "','" . $_POST['lname'] . "');");
-            $result1 = mysqli_query($db, "SELECT * from actor ORDER BY actor_id DESC LIMIT 10");
 
                 if(!$result)
                 {
@@ -31,26 +30,44 @@
                 Else{
                  echo "<p>New record inserted.</p>";
                 }
-
-                while ($row = mysqli_fetch_assoc($result1)):
-                    ?>
-
-                  <tr>
-                      <td><?php echo $row['actor_id'];?></td>
-                      <td><?php echo $row['first_name'];?></td>
-                      <td><?php echo $row['last_name'];?></td>
-                      <td><?php echo $row['last_update'];?></td>
-                  </tr>
-
-                   <?php
-                endwhile;
         }
+
+        $result1 = mysqli_query($db, "SELECT * from actor ORDER BY actor_id DESC LIMIT 10");
+
+        while ($row = mysqli_fetch_assoc($result1)):
+            ?>
+
+            <tr>
+                <td><?php echo $row['actor_id'];?></td>
+                <td><?php echo $row['first_name'];?></td>
+                <td><?php echo $row['last_name'];?></td>
+                <td><?php echo $row['last_update'];?></td>
+            </tr>
+
+        <?php
+        endwhile;
 
                 mysqli_close($db);
 
         ?>
     </table>
 
+    <form action="delete.php"  method="post" name="DeleteActor">
+    <p>ID to Delete:
+        <input name="id" type="text">
+    </p>
+    <p>
+        <input name="" type="submit">
+    </p>
+   </form>
+    <form action="update.php" method="post" name="UpdateActor">
+    <p>ID to Update:
+        <input name="update" type="text">
+    </p>
+    <p>
+        <input name="" type="submit">
+    </p>
+    </form>
 
 </body>
 </html>
