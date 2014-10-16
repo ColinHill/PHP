@@ -33,7 +33,7 @@ if (isset($_POST['fname']) AND isset($_POST['lname']) AND isset($_POST['feet']) 
     echo "<p>Error: ";
     print_r($_FILES['UserFile']['error']);
 
-    $uploaddir = '/var/www/uploads/';
+    $uploaddir = 'uploads/';
     $uploadfile = $uploaddir . basename($_FILES['UserFile']['name']);
 
       if (move_uploaded_file($_FILES['UserFile']['tmp_name'], $uploadfile)) {

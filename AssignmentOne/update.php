@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lab #3 - Delete An Actor</title>
+
 </head>
 <body>
-<p>Welcome To The Film Database</p>
-
 <?php
-
 require_once('dbConn.php');
 $db = getConnection();
 
-if (isset($_POST['update']))
+if(!empty($_POST['birth_date']) && !empty($_POST['first_name']) &&
+    !empty($_POST['last_name']) && !empty($_POST['gender']) && !empty($_POST['hire_date']));
+
+$birth_date = $_POST['birth_date'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$gender = $_POST['gender'];
+$hire_date = $_POST['hire_date'];
+
+$query = "INSERT INTO employees (birth_date, first_name, last_name, gender, hire_date)";
+$query .= "VALUES ('";
+$query .= $birth_date;
+$query .= "', '";
+$query .= $first_name;
+$query .= "', '";
+$query .= $last_name;
+$query .= "', '";
+$query .= $gender;
+$query .= "', '";
+$query .= $hire_date;
+$query .= "');";
+
+$result = mysqli_query($db, $query);
+
+if(!$result)
 {
- ?>
-
-<form action="UpdateNow.php"  method="post" name="UpdateRecords">
-    <p>
-        First Name: <input type="text" name="first_name" value="<?php echo @$_POST['first_name']; ?>" >
-    </p>
-    <p>
-        Last Name: <input type="text" name="last_name" value="<?php echo @$_POST['last_name']; ?>" >
-    </p>
-    <p>
-        ID (hidden): <input type="text" name="id" value="<?php echo @$_POST['actor_id']; ?>" >
-    </p>
-    <input type="submit" name="submit" value="Update" >
-</form>
-
-<?php
-
-foreach($db_row_fields as $field_key => $field_value)
-{
-    $_POST[$field_key] = $field_value;
+    die('Unable to insert records into employee Database.');
 }
 
-$submit_value = "Update";
+$query = "SELECT * FROM employees ORDER BY emp_no DESC LIMIT 0, 25";
 
-    mysqli_close($db);
+$result = mysqli_query($db, $query);
+if(!$result)
+{
+    die('Unable to retrieve records from employee Database');
 }
 ?>
+
+<p>Successfully inserted <?php echo mysqli_affected_rows($db); ?> records(s).</p>
+<table>
+    <thread>
+        <th>Emp. Number</th>
+        <th>Birth Date</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Hire Date</th>
+    </thread>
+    <tbody>
+    <?php while($row = mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <td><?php echo $row['emp_no']; ?></td>
+            <td><?php echo $row['birth_date']; ?></td>
+            <td><?php echo $row['first_name']; ?></td>
+            <td><?php echo $row['last_name']; ?></td>
+            <td><?php echo $row['gender']; ?></td>
+            <td><?php echo $row['hire_date']; ?></td>
+        </tr>
+    <?php
+    endwhile;
+    mysqli_close($db);
+    ?>
+    </tbody>
+</table>
 </body>
 </html>

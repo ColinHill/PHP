@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lab #3 - Delete An Actor</title>
+    <title>Delete An Employee</title>
 </head>
 <body>
-<p>Welcome To The Film Database</p>
 
     <?php
 
@@ -29,8 +28,7 @@
     }
     ?>
 
-    <A href="PartB.php">Back to Actor List</A>
-
+    <A href="films.php">Back to Employee List</A>
 
 </body>
 </html>

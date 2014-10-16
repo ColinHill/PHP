@@ -46,28 +46,23 @@ function validateForm()
 function italicText(fieldID)
 {
     var myFormItem = document.getElementById(fieldID);
+    var myFormItemLabel = myFormItem + "Label";
     if(myFormItem != null)
     {
         myFormItem.style.fontStyle = "italic";
-        myFormItem.style.backgroundColor = 'yellow';
+        myFormItem.style.backgroundColor = "yellow";
+        myFormItemLabel.style.textDecoration = "underline";
     }//end if
 }//end function
 
 function normalText(fieldID)
 {
     var myFormItem = document.getElementById(fieldID);
+    var myFormItemLabel = myFormItem + "Label";
     if(myFormItem != null)
     {
         myFormItem.style.fontStyle = "normal";
-        myFormItem.style.backgroundColor = 'white';
-    }//end if
-}//end function
-
-function underlineText(fieldID)
-{
-    var myFormItem = document.getElementById(fieldID);
-    if(myFormItem != null)
-    {
-        myFormItem.style.textDecoration = "underline";
+        myFormItem.style.backgroundColor = "white";
+        myFormItemLabel.style.textDecoration = "none";
     }//end if
 }//end function

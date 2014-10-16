@@ -6,7 +6,12 @@
     <body>
 
     <?php
-        $string = ($_POST['search']);
+        session_start();
+        $_session['search']=[0];
+        $_session['ids'] = array();
+        $pageRow = 0;
+        $arrayCounter = 0;
+
 
     ?>
 
@@ -21,24 +26,27 @@
 
     <table border = "1">
         <th>Emp. Number</th><th>Birth Date</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>Hire Date</th>
+        <th>Edit Emp</th><th>Delete Emp</th>
 
         <?php
 
         require_once('dbConn.php');
         $db = getConnection();
 
-
-        $pageRow = 0;
-
+        /*
         if (isset ($_POST['next']))
         {
-            $pageRow = ($_POST['nextIndex']);
+        $_session['search']+=25;
+            $pageRow = $_session['search'];
         }//end if
 
         if (isset ($_POST['previous']))
         {
-            $pageRow = ($_POST['previousIndex']);
+        if(($_session['search']- 25) <= 0){$_session['search']=0;} else{$_session['search']-=25;};
+
+
         }//end if
+*/
 
         if (isset($_POST['search']))
         {
@@ -54,7 +62,7 @@
             die('Could not connect to the Employees Database: ' . mysqli_error($db));
         }//end if
 
-        $sqlOrder = "SELECT * FROM employees WHERE first_name LIKE '$string' OR last_name LIKE '$string' LIMIT $pageRow,25";
+  $sqlOrder = "SELECT * FROM employees WHERE first_name LIKE '$string' OR last_name LIKE '$string' LIMIT $pageRow,25";
 
         $result = mysqli_query($db,$sqlOrder);
 
@@ -65,9 +73,22 @@
 
         while ($row = mysqli_fetch_assoc($result))
                 {
-                  echo "<tr><td>" . $row['emp_no'] ."</td><td>" . $row['birth_date'] . "</td>
+                  echo  "<tr><td>" . $row['emp_no'] ."</td><td>" . $row['birth_date'] . "</td>
                         <td>" . $row['first_name'] ."</td><td>" . $row['last_name'] . "</td>
-                        <td>" . $row['gender'] ."</td><td>" . $row['hire_date'] . "</td></tr>";
+                        <td>" . $row['gender'] ."</td><td>" . $row['hire_date'] . "</td>
+                        <td><a href = 'UpdateNow.php'><img src = 'images/pencil-clip-art.jpg' height = '10%' width = '10%'></a></td>
+                        <td><a href = 'delete.php'><img src = 'images/delete-clip-art.png' height = '10%' width = '10%'></a></td></tr>";
+
+                    array_push($_session['ids'], $row['emp_no']);
+
+                 echo '<input type="hidden" name="arrayID';
+                 echo($arrayCounter);
+                 echo'" value="';
+                 echo ($arrayCounter);
+                 echo'"/>';
+
+
+                $arrayCounter++;
                 }//end while
 
                 mysqli_close($db);
@@ -76,10 +97,10 @@
     </table>
 
         <p>
-            <input name="previousIndex" type="hidden" value=" <?php if(($pageRow - 25) <= 0){echo ($pageRow = 0);}; ?> ">
-            <input name="nextIndex" type="hidden" value=" <?php echo ($pageRow + 25) ?> ">
-            <input name="previous" type="submit" value="Previous Page">
-            <input name="next" type="submit" value="Next Page">
+
+            <input name="previous" type="submit" value="Previous Page" >
+            <input name="next" type="submit" value="Next Page" >
+
         </p>
     </form>
 

@@ -1,68 +1,30 @@
-/**
- * Created by inet2005 on 9/29/14.
- */
+function highlight(elem) { document.getElementById(elem).style.background = "#ffff00";
+    document.getElementById(elem).style.fontStyle="italic"; document.getElementById(elem).parentNode.style.textDecoration="underline"; }
 
-function validateForm()
-{
-    if(document.forms["myForm"].fname.value.length ==0)
-    {
-        var myFormItem = document.getElementById("fname");
-        myFormItem.style.borderColor = "Red";
-        return false;
-    }//end if
-    else if(document.forms["myForm"].lname.value.length ==0)
-    {
-        var myFormItem = document.getElementById("lname");
-        myFormItem.style.borderColor = "Red";
-        return false;
-    }//end if
-    else if(document.forms["myForm"].address1.value.length ==0)
-    {
-        var myFormItem = document.getElementById("address1");
-        myFormItem.style.borderColor = "Red";
-        return false;
-    }//end if
-    else if(document.forms["myForm"].address2.value.length ==0)
-    {
-        var myFormItem = document.getElementById("address2");
-        myFormItem.style.borderColor = "Red";
-        return false;
-    }//end if
-    else if(document.forms["myForm"].email.value.length ==0)
-    {
-        var myFormItem = document.getElementById("email");
-        myFormItem.style.borderColor = "Red";
-        return false;
-    }//end if
-    else if(!document.getElementById("terms").checked)
-    {
-        var myFormItem = document.getElementById("checkboxSpan");
-        myFormItem.style.color = "red";
-        myFormItem.innerHTML = " Must accept terms and conditions.";
-        return false;
-    }//end if
-}//end function
+function lowlight(elem) { document.getElementById(elem).style.background = "#ffffff";
+    document.getElementById(elem).style.fontStyle="normal"; document.getElementById(elem).parentNode.style.textDecoration="none"; }
 
-function italicText(fieldID)
-{
-    var myFormItem = document.getElementById(fieldID);
-    var myFormItemLabel = myFormItem + "Label";
-    if(myFormItem != null)
-    {
-        myFormItem.style.fontStyle = "italic";
-        myFormItem.style.backgroundColor = "yellow";
-        myFormItemLabel.style.textDecoration = "underline";
-    }//end if
-}//end function
+function validateForm() { var form_valid = true;
 
-function normalText(fieldID)
-{
-    var myFormItem = document.getElementById(fieldID);
-    var myFormItemLabel = myFormItem + "Label";
-    if(myFormItem != null)
-    {
-        myFormItem.style.fontStyle = "normal";
-        myFormItem.style.backgroundColor = "white";
-        myFormItemLabel.style.textDecoration = "none";
-    }//end if
-}//end function
+if(document.getElementById("first_name").value.length == 0)
+{ document.getElementById("first_name").style.borderColor = "#ff0000"; form_valid = false; }
+else { document.getElementById("first_name").style.borderColor = "#00ff00";}
+
+if(document.getElementById("last_name").value.length == 0)
+{ document.getElementById("last_name").style.borderColor = "#ff0000"; form_valid = false; }
+else { document.getElementById("last_name").style.borderColor = "#00ff00"; }
+
+if(document.getElementById("birth_date").value.length == 0)
+{ document.getElementById("birth_date").style.borderColor = "#ff0000"; form_valid = false; }
+else { document.getElementById("birth_date").style.borderColor = "#00ff00"; }
+
+if(document.getElementById("gender").value.length == 0)
+{ document.getElementById("gender").style.borderColor = "#ff0000"; form_valid = false; }
+else { document.getElementById("gender").style.borderColor = "#00ff00"; }
+
+if(document.getElementById("hire_date").value.length == 0)
+{ document.getElementById("hire_date").style.borderColor = "#ff0000"; form_valid = false; }
+else { document.getElementById("hire_date").style.borderColor = "#00ff00"; }
+
+return form_valid;
+}

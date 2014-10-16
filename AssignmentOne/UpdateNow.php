@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lab #3 - Delete An Actor</title>
-</head>
-<body>
-<p>Welcome To The Film Database</p>
-
     <?php
-
     require_once('dbConn.php');
     $db = getConnection();
-
-    if (isset($_POST['first_name']) || isset($_POST['last_name']))
-    {
-        $fname = $_POST['first_name'];
-        $lname = $_POST['last_name'];
-        $id = $_POST['id'];
-
-        $result = mysqli_query($db,"UPDATE actor SET first_name =  '" . $fname . "' where actor_id = " . $id . ";");
-        $result = mysqli_query($db,"UPDATE actor SET last_name =  '" . $lname . "' where actor_id = " . $id . ";");
-
-        if(!$result)
-        {
-            die('Could not update record in the Employees Database: ' . mysqli_error($db));
-        }
-
-    }
-        Else
-        {;
-            $affectedRows = mysql_affected_rows($db);
-            echo "<p>Successfully updated " . $affectedRows . " record(s).</p>";
-        }
-    mysqli_close($db);
-
     ?>
-
-    <A href="PartB.php">Back to Actor List</A>
-
-
+    <title>Insert Record</title>
+    <script src="valadation.js"></script>
+</head>
+<body>
+<form action="update.php" method="post" onsubmit="return validateForm()">
+    <label>Birth Date: <input type="text" name="birth_date" id="birth_date"
+                              onfocus="highlight('birth_date')" onblur="lowlight('birth_date')"/>. </label><br>
+    <label>First Name: <input type="text" name="first_name" id="first_name"
+                              onfocus="highlight('first_name')" onblur="lowlight('first_name')"/>. </label><br>
+    <label>Last Name: <input type="text" name="last_name" id="last_name"
+                             onfocus="highlight('last_name')" onblur="lowlight('last_name')"/>. </label><br>
+    <label>Gender: <input type="text" name="gender" id="gender"
+                          onfocus="highlight('gender')" onblur="lowlight('gender')"/>. </label><br>
+    <label>Hire Date: <input type="text" name="hire_date" id="hire_date"
+                             onfocus="highlight('hire_date')" onblur="lowlight('hire_date')"/>. </label><br>
+    <p><input type="submit" name="Insert Record" value="Insert Record" /></p>
+</form>
+<?php
+mysqli_close($db);
+?>
 </body>
 </html>
