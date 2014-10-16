@@ -7,12 +7,15 @@
 
     <?php
         session_start();
-        $_session['search']=[0];
-        $_session['ids'] = array();
-        $pageRow = 0;
+
+        require_once('dbConn.php');
+        $db = getConnection();
+
+        $_session['search'] = 200;
+        $array['ids'] = array();
         $arrayCounter = 0;
-
-
+        $string = "";
+        $string = $_POST['search'];
     ?>
 
     <form action="<?php $_SERVER['PHP_SELF'] ?>"  method="post" name="EmployeeSearch">
@@ -21,48 +24,54 @@
         </p>
         <p>
             <input name="" type="submit">
+
+
+            <input name="pageRow" type="text" value="<?php echo $pageRow; ?>" />
         </p>
 
 
     <table border = "1">
-        <th>Emp. Number</th><th>Birth Date</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>Hire Date</th>
+        <th>Emp. Number</th><th>Birth Date</th>
+        <th>First Name</th><th>Last Name</th>
+        <th>Gender</th><th>Hire Date</th>
         <th>Edit Emp</th><th>Delete Emp</th>
 
         <?php
 
-        require_once('dbConn.php');
-        $db = getConnection();
 
-        /*
         if (isset ($_POST['next']))
         {
-        $_session['search']+=25;
-            $pageRow = $_session['search'];
+            $_session['search']+= 25;
         }//end if
 
         if (isset ($_POST['previous']))
         {
-        if(($_session['search']- 25) <= 0){$_session['search']=0;} else{$_session['search']-=25;};
-
-
+            if(($_session['search']- 25) <= 0)
+            {
+                $_session['search']= 0;
+            }
+            else
+            {
+                $_session['search']-= 25;
+            }
         }//end if
-*/
+
+
+        $sqlOrder = "SELECT * FROM employees";
 
         if (isset($_POST['search']))
         {
             $string = $_POST['search'];
             $string = "%" . $string . "%";
+            $sqlOrder .= " WHERE first_name LIKE '$string' OR last_name LIKE '$string'";
         }//end if
-        else
-        {
-            $message = "Please enter a search term.";
-        }//end else
+
+        $sqlOrder .= " LIMIT " . $_session['search'] . ",25";
+
         if (!$db)
         {
             die('Could not connect to the Employees Database: ' . mysqli_error($db));
         }//end if
-
-  $sqlOrder = "SELECT * FROM employees WHERE first_name LIKE '$string' OR last_name LIKE '$string' LIMIT $pageRow,25";
 
         $result = mysqli_query($db,$sqlOrder);
 
@@ -75,34 +84,80 @@
                 {
                   echo  "<tr><td>" . $row['emp_no'] ."</td><td>" . $row['birth_date'] . "</td>
                         <td>" . $row['first_name'] ."</td><td>" . $row['last_name'] . "</td>
-                        <td>" . $row['gender'] ."</td><td>" . $row['hire_date'] . "</td>
-                        <td><a href = 'UpdateNow.php'><img src = 'images/pencil-clip-art.jpg' height = '10%' width = '10%'></a></td>
-                        <td><a href = 'delete.php'><img src = 'images/delete-clip-art.png' height = '10%' width = '10%'></a></td></tr>";
+                        <td>" . $row['gender'] ."</td><td>" . $row['hire_date'] . "</td>";
 
-                    array_push($_session['ids'], $row['emp_no']);
+                         ?>
 
-                 echo '<input type="hidden" name="arrayID';
-                 echo($arrayCounter);
-                 echo'" value="';
-                 echo ($arrayCounter);
-                 echo'"/>';
+        <?php
 
+             array_push($array['ids'], $row['emp_no']);
+
+
+         ?>
+        <td>
+        <form action="UpdateNow.php"  method="post" name="id_update">
+        <input type="hidden" name="id_update" value="<?php echo ($array[ids][$arrayCounter]); ?>"/>
+        <input type="submit" value="Update Employee" />
+        </form></td>
+
+
+
+        <td><form action="delete.php"  method="post" name="id_delete">
+        <input type="hidden" name="id_delete" value="<?php echo ($array[ids][$arrayCounter]); ?>"/>
+        <input type="submit" value="Delete Employee" />
+           </form></td></tr>
+
+            <?php
+
+            $arrayCounter++;
+
+            }//end while
+
+            Print_r ($array)
+
+ /*               array_push($array['ids'], $row['emp_no']);
+
+                echo "<td>";
+
+                echo "<input name='submit' type='submit' value='";
+
+                echo ($array[ids][$arrayCounter]);
+
+                echo "'>";
+
+            //    echo "' src='images/delete-clip-art.png' height = '10%' width = '10%'>";
+
+                echo "</tr>";
+
+                echo "<input type='text' name='";
+                echo($array[ids][$arrayCounter]);
+                echo "' value='";
+                echo(($array[ids][$arrayCounter]));
+                echo "'/>'";
+
+                echo "</td>";
 
                 $arrayCounter++;
+
                 }//end while
 
-                mysqli_close($db);
+                  Print_r ($array)
+*/
 
                 ?>
+            </form>
     </table>
 
         <p>
-
-            <input name="previous" type="submit" value="Previous Page" >
+            <input name="previous" type="submit" value="Previous Page">
             <input name="next" type="submit" value="Next Page" >
 
         </p>
     </form>
+
+    <?php
+        mysqli_close($db);
+    ?>
 
 </body>
 </html>

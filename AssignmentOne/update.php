@@ -11,24 +11,25 @@ $db = getConnection();
 if(!empty($_POST['birth_date']) && !empty($_POST['first_name']) &&
     !empty($_POST['last_name']) && !empty($_POST['gender']) && !empty($_POST['hire_date']));
 
+$emp_no = $_POST['emp_no'];
 $birth_date = $_POST['birth_date'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $gender = $_POST['gender'];
 $hire_date = $_POST['hire_date'];
 
-$query = "INSERT INTO employees (birth_date, first_name, last_name, gender, hire_date)";
-$query .= "VALUES ('";
+$query = "UPDATE employees ";
+$query .= "SET birth_date='";
 $query .= $birth_date;
-$query .= "', '";
+$query .= "', first_name='";
 $query .= $first_name;
-$query .= "', '";
+$query .= "', last_name='";
 $query .= $last_name;
-$query .= "', '";
+$query .= "', gender='";
 $query .= $gender;
-$query .= "', '";
+$query .= "', hire_date='";
 $query .= $hire_date;
-$query .= "');";
+$query .= "' WHERE emp_no = '$emp_no'";
 
 $result = mysqli_query($db, $query);
 

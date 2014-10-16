@@ -10,10 +10,10 @@
     require_once('dbConn.php');
     $db = getConnection();
 
-    if (isset($_POST['id']))
+    if (isset($_POST['id_delete']))
     {
-        $id = $_POST['id'];
-        $result = mysqli_query($db,"DELETE FROM actor WHERE actor_id = '" . $id ."';");
+        $id = $_POST['id_delete'];
+        $result = mysqli_query($db,"DELETE FROM employees WHERE emp_no = '" . $id ."';");
 
         if(!$result)
         {
