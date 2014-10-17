@@ -38,7 +38,7 @@ while ($column = mysqli_fetch_assoc($result))
                           onfocus="highlight('gender')" onblur="lowlight('gender')"/>. </label><br>
     <label>Hire Date: <input type="text" name="hire_date" id="hire_date" value="<?php echo $hire_date ?>"
                              onfocus="highlight('hire_date')" onblur="lowlight('hire_date')"/>. </label><br>
-    <p><input type="submit" name="Update Record" value="Insert Record" /></p>
+    <p><input type="submit" name="Update Record" value="Update Record" /></p>
 </form>
 <?php
 mysqli_close($db);

@@ -113,36 +113,7 @@
 
             }//end while
 
-            Print_r ($array)
-
- /*               array_push($array['ids'], $row['emp_no']);
-
-                echo "<td>";
-
-                echo "<input name='submit' type='submit' value='";
-
-                echo ($array[ids][$arrayCounter]);
-
-                echo "'>";
-
-            //    echo "' src='images/delete-clip-art.png' height = '10%' width = '10%'>";
-
-                echo "</tr>";
-
-                echo "<input type='text' name='";
-                echo($array[ids][$arrayCounter]);
-                echo "' value='";
-                echo(($array[ids][$arrayCounter]));
-                echo "'/>'";
-
-                echo "</td>";
-
-                $arrayCounter++;
-
-                }//end while
-
-                  Print_r ($array)
-*/
+//            Print_r ($array)
 
                 ?>
             </form>
@@ -152,6 +123,12 @@
             <input name="previous" type="submit" value="Previous Page">
             <input name="next" type="submit" value="Next Page" >
 
+        </p>
+    </form>
+
+    <form action="InsertRecords.php" method="post" >
+        <p>
+            <input type="submit" value="Create A New Entry">
         </p>
     </form>
 

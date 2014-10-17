@@ -28,7 +28,11 @@
     }
     ?>
 
-    <A href="films.php">Back to Employee List</A>
+    <form action="index.php" method="post" >
+        <p>
+            <input type="submit" value="Return To Employees Database">
+        </p>
+    </form>
 
 </body>
 </html>

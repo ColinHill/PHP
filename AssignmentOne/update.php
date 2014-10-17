@@ -35,19 +35,19 @@ $result = mysqli_query($db, $query);
 
 if(!$result)
 {
-    die('Unable to insert records into employee Database.');
+    die('Unable to update record into employee Database.');
 }
 
-$query = "SELECT * FROM employees ORDER BY emp_no DESC LIMIT 0, 25";
+$query = "SELECT * FROM employees WHERE emp_no = '$emp_no' ORDER BY emp_no DESC LIMIT 0, 1";
 
 $result = mysqli_query($db, $query);
 if(!$result)
 {
-    die('Unable to retrieve records from employee Database');
+    die('Unable to update record from employee Database');
 }
 ?>
 
-<p>Successfully inserted <?php echo mysqli_affected_rows($db); ?> records(s).</p>
+<p>Successfully updated <?php echo mysqli_affected_rows($db); ?> records(s).</p>
 <table>
     <thread>
         <th>Emp. Number</th>
@@ -73,5 +73,10 @@ if(!$result)
     ?>
     </tbody>
 </table>
+<form action="index.php" method="post" >
+    <p>
+        <input type="submit" value="Return To Employees Database">
+    </p>
+</form>
 </body>
 </html>
