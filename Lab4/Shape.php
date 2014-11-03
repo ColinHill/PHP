@@ -1,41 +1,67 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-class Car 
-{
+    abstract class Shape
+    {
+        //variables
         protected $name;
-        protected $owner;
-        protected $mileage;
+        protected $length;
+        protected $width;
+        protected $base;
+        protected $height;
+        protected $radius;
 
-        public function __construct($in_name,$in_owner,$in_mileage)
+        //abstract methods
+        abstract function calculateSize();
+
+        //public methods
+        public function __constructCircle($in_name,$in_radius)
         {
-                $this->name = $in_name;
-                $this->owner = $in_owner;
-                $this->mileage = $in_mileage;
-        }
+            $this->name = $in_name;
+            $this->radius = $in_radius;
+        }//end constructCircle
 
-        public function getOwner()
+        public function __constructRectangle($in_name,$in_length,$in_width)
         {
-            return ($this->owner);
-        }
+            $this->name = $in_name;
+            $this->length = $in_length;
+            $this->width = $in_width;
+        }//end constructRectangle
 
-        public function getName()
+        public function __constructTriangle($in_name,$in_base,$in_height)
+        {
+            $this->name = $in_name;
+            $this->base = $in_base;
+            $this->height = $in_height;
+        }//end constructTriangle
+
+        public function getShape()
         {
             return ($this->name);
-        }
+        }//end getShape
 
-        public function getMileage()
+        public function getLength()
         {
-            return ($this->mileage);
-        }
+            return ($this->length);
+        }//end getLength
 
-        public function driveFiftyMiles()
+        public function getWidth()
         {
-            $this->mileage += 50;
-            return "Drove $this->owner's $this->name fifty miles!";
-        }
-}
+            return ($this->width);
+        }//end getWidth
 
+        public function getBase()
+        {
+            return ($this->base);
+        }//end getBase
+
+        public function getHeight()
+        {
+            return ($this->height);
+        }//end getHeight
+
+        public function getRadius()
+        {
+            return ($this->radius);
+        }//end getRadius
+
+    }//end abstract class Shape
 ?>

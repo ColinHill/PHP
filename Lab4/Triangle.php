@@ -1,28 +1,17 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-require_once("Shape.php");
-class SportsCar extends Car
-{
-        private $street_legal;
+    require_once("Shape.php");
+    class Triangle extends Shape
+    {
+        public function __constructTriangle($in_name,$in_base,$in_height)
+        {
+            parent::__constructTriangle($in_name,$in_base,$in_height);
+        }//end constructor
 
-        public function __construct($in_name,$in_owner,$in_mileage,$in_streel_legal)
+        public function calculateSize()
         {
-                parent::__construct( $in_name,$in_owner,$in_mileage);
-	        $this->street_legal  = $in_streel_legal; 
-        }
-        
-        public function driveFiftyMiles()
-        {
-            if($this->street_legal)
-            {
-                return parent::driveFiftyMiles();
-            }
-            else 
-            {
-                return "You cannot drive $this->owner's $this->name on the highway!";
-            }
-        }
-}
+            $area = ($this->base * $this->height) / 2;
+            return $area;
+        }//end calculateSize
+
+    }//end class Triangle
+?>
