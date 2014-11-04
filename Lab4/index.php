@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Area Calculator - Lab #4</title>
     </head>
     <body>
@@ -46,7 +47,7 @@
 
         ?>
 
-        <table border = 0>
+        <table border = 0 width = 100%>
             <tr>
                 <td width = 50%>
                     <form name="areaForm" id="areaForm" method="post" action="Area.php">
@@ -54,7 +55,7 @@
                             <legend style="color:black;font-weight:bold;">Circle</legend>
                             <table>
                                 <tr>
-                                    <td width = 14%>Radius:</td>
+                                    <td width = 60>Radius:</td>
                                     <td><input type="text" name="radius" id="radius" value="<?php echo $radius;?>"/></td>
                                 </tr>
                             </table>
@@ -63,9 +64,9 @@
                             <legend style="color:black;font-weight:bold;">Rectangle</legend>
                             <table>
                                 <tr>
-                                    <td width = 14%>Length:</td>
+                                    <td width = 60>Length:</td>
                                     <td><input type="text" name="length" id="length" value="<?php echo $length;?>"/></td>
-                                    <td width = 14%> Width:</td>
+                                    <td width = 60>Width:</td>
                                     <td><input type="text" name="width" id="width" value="<?php echo $width;?>"/></td>
                                 </tr>
                             </table>
@@ -74,9 +75,9 @@
                             <legend style="color:black;font-weight:bold;">Triangle</legend>
                             <table>
                                 <tr>
-                                    <td width = 14%>Base:</td>
+                                    <td width = 60>Base:</td>
                                     <td><input type="text" name="base" id="base" value="<?php echo $base;?>"/></td>
-                                    <td width = 14%>Height:</td>
+                                    <td width = 60>Height:</td>
                                     <td><input type="text" name="height" id="height" value="<?php echo $height;?>"/></td>
                                 </tr>
                             </table>
@@ -96,25 +97,24 @@
                             <legend style="color:black;font-weight:bold;">iResizable</legend>
                             <table>
                                 <tr>
-                                    <td width = 20%>Circle Size:</td>
+                                    <td width = 120>Circle Size:</td>
                                     <td><input type="text" name="circleSize" id="circleSize" value=""/>%</td>
                                 </tr>
                             </table>
                         </fieldset>
-                        <fieldset>
-                            <legend style="color:black;font-weight:bold;"></legend>
+
                             <table>
                                 <tr>
-                                    <td>
+                                    <td height = 66>
                                     </td>
                                 </tr>
                             </table>
-                        </fieldset>
+
                         <fieldset>
                             <legend style="color:black;font-weight:bold;">iResizable</legend>
                             <table>
                                 <tr>
-                                    <td width = 20%>Triangle Size:</td>
+                                    <td width = 120>Triangle Size:</td>
                                     <td><input type="text" name="triangleSize" id="triangleSize" value=""/>%</td>
                                 </tr>
                             </table>
@@ -124,24 +124,5 @@
                 </td>
             </tr>
         </table>
-
-        <?php
-
-            include_once("Triangle.php");
-            $myTriangle = new Triangle("Triangle", $base, $height);
-            echo "<h2>" . $myTriangle->getShape() . "</h2>";
-            echo "<h3>Area: " . $myTriangle->calculateSize() . "</h3>";
-
-            include_once("Circle.php");
-            $myCircle = new Circle("Circle", $radius);
-            echo "<h2>" . $myCircle->getShape() . "</h2>";
-            echo "<h3>Area: " . $myCircle->calculateSize() . "</h3>";
-
-            include_once("Rectangle.php");
-            $myRectangle = new Rectangle("Rectangle", $length, $width);
-            echo "<h2>" . $myRectangle->getShape() . "</h2>";
-            echo "<h3>Area: " . $myRectangle->calculateSize() . "</h3>";
-        ?>
-
     </body>
 </html>

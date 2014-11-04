@@ -16,5 +16,11 @@
             return $area;
         }//end calculateSize
 
+        public function resize()
+        {
+            $area = pi() * pow($this->radius,2);
+            return $area;
+        }//end resize
+
     }//end class Circle
 ?>
