@@ -2,9 +2,14 @@
     require_once("Shape.php");
     class Triangle extends Shape
     {
-        public function __constructTriangle($in_name,$in_base,$in_height)
+        protected $base;
+        protected $height;
+
+        public function __construct($in_name, $in_base, $in_height)
         {
-            parent::__constructTriangle($in_name,$in_base,$in_height);
+            $this->base = $in_base;
+            $this->height = $in_height;
+            parent::__construct($in_name);
         }//end constructor
 
         public function calculateSize()

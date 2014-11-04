@@ -2,14 +2,17 @@
     require_once("Shape.php");
     class Circle extends Shape
     {
-        public function __constructCircle($in_name,$in_radius)
+        protected $radius;
+
+        public function __construct($in_name, $in_radius)
         {
-            parent::__constructCircle($in_name,$in_radius);
+            $this->radius = $in_radius;
+            parent::__construct($in_name);
         }//end constructor
 
         public function calculateSize()
         {
-            $area = 2 * (3.14 * $this->radius);
+            $area = pi() * pow($this->radius,2);
             return $area;
         }//end calculateSize
 

@@ -3,35 +3,15 @@
     {
         //variables
         protected $name;
-        protected $length;
-        protected $width;
-        protected $base;
-        protected $height;
-        protected $radius;
 
         //abstract methods
-        abstract function calculateSize();
+        abstract public function calculateSize();
 
         //public methods
-        public function __constructCircle($in_name,$in_radius)
+        public function __construct($in_name)
         {
             $this->name = $in_name;
-            $this->radius = $in_radius;
-        }//end constructCircle
-
-        public function __constructRectangle($in_name,$in_length,$in_width)
-        {
-            $this->name = $in_name;
-            $this->length = $in_length;
-            $this->width = $in_width;
-        }//end constructRectangle
-
-        public function __constructTriangle($in_name,$in_base,$in_height)
-        {
-            $this->name = $in_name;
-            $this->base = $in_base;
-            $this->height = $in_height;
-        }//end constructTriangle
+        }//end constructShape
 
         public function getShape()
         {

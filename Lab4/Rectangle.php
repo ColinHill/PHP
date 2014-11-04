@@ -2,9 +2,14 @@
     require_once("Shape.php");
     class Rectangle extends Shape
     {
-        public function __constructRectangle($in_name,$in_length,$in_width)
+        protected $length;
+        protected $width;
+
+        public function __construct($in_name, $in_length, $in_width)
         {
-            parent::__constructRectangle($in_name,$in_length,$in_width);
+            $this->length = $in_length;
+            $this->width = $in_width;
+            parent::__construct($in_name);
         }//end constructor
 
         public function calculateSize()
