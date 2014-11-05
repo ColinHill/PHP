@@ -1,6 +1,8 @@
 <?php
     require_once("Shape.php");
-    class Circle extends Shape
+    require_once("iResizable.php");
+
+    class Circle extends Shape implements iResizable
     {
         protected $radius;
         protected $resize;

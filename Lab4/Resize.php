@@ -51,11 +51,11 @@
                 $triangleSize = NULL;
             }//end if
 
-    //    $radius = $myCircle->getRadius();
-    //    $length = $myRectangle->getLength();
-    //    $width = $myRectangle->getWidth();
-    //    $base = $myTriangle->getBase();
-    //    $height = $myTriangle->getHeight();
+        //$radius = $myCircle->getRadius();
+       // $length = $myRectangle->getLength();
+        //$width = $myRectangle->getWidth();
+       // $base = $myTriangle->getBase();
+       // $height = $myTriangle->getHeight();
 
         ?>
 
@@ -98,7 +98,7 @@
                     </form>
                 </td>
                 <td width = 50%>
-                    <form name="ResizeForm" id="areaForm" method="post" action="Resize.php">
+                    <form name="resizeForm" id="resizeForm" method="post" action="Resize.php">
                         <input type="hidden" name="radius" id="radius" value="<?php echo $radius;?>"/>
                         <input type="hidden" name="length" id="length" value="<?php echo $length;?>"/>
                         <input type="hidden" name="width" id="width" value="<?php echo $width;?>"/>
