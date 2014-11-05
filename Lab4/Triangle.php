@@ -4,6 +4,7 @@
     {
         protected $base;
         protected $height;
+        protected $resize;
 
         public function __construct($in_name, $in_base, $in_height)
         {
@@ -18,11 +19,13 @@
             return $area;
         }//end calculateSize
 
-        public function resize()
+        public function resize($in_resize)
         {
-            $area = pi() * pow($this->radius,2);
+            $this->resize = $in_resize;
+            $this->resize = $this->resize /100;
+            $this->height = $this->height * $this->resize;
+            $area = ($this->base * $this->height) / 2;
             return $area;
         }//end resize
-
     }//end class Triangle
 ?>

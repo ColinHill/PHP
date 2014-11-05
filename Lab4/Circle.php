@@ -3,6 +3,7 @@
     class Circle extends Shape
     {
         protected $radius;
+        protected $resize;
 
         public function __construct($in_name, $in_radius)
         {
@@ -16,11 +17,13 @@
             return $area;
         }//end calculateSize
 
-        public function resize()
+        public function resize($in_resize)
         {
+            $this->resize = $in_resize;
+            $this->resize = $this->resize /100;
+            $this->radius = $this->radius * $this->resize;
             $area = pi() * pow($this->radius,2);
             return $area;
         }//end resize
-
     }//end class Circle
 ?>

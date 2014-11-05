@@ -6,7 +6,7 @@
 
         //abstract methods
         abstract public function calculateSize();
-        abstract public function resize();
+        abstract public function resize($in_name);
 
         //public methods
         public function __construct($in_name)

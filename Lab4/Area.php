@@ -38,6 +38,18 @@
             } else {
                 $height = NULL;
             }//end if
+            if (isset($_POST['circleSize']))
+            {
+                $circleSize = ($_POST['circleSize']);
+            } else {
+                $circleSize = NULL;
+            }//end if
+            if (isset($_POST['triangleSize']))
+            {
+                $triangleSize = ($_POST['triangleSize']);
+            } else {
+                $triangleSize = NULL;
+            }//end if
 
     //    $radius = $myCircle->getRadius();
     //    $length = $myRectangle->getLength();

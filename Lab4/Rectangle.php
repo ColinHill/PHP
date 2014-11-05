@@ -18,5 +18,8 @@
             return $area;
         }//end calculateSize
 
+        public function resize($in_resize){
+            //unused abstract implementation
+        }//end resize
     }//end class Rectangle
 ?>

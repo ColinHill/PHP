@@ -38,6 +38,18 @@
             } else {
                 $height = NULL;
             }//end if
+            if (isset($_POST['circleSize']))
+            {
+                $circleSize = ($_POST['circleSize']);
+            } else {
+                $circleSize = NULL;
+            }//end if
+            if (isset($_POST['triangleSize']))
+            {
+                $triangleSize = ($_POST['triangleSize']);
+            } else {
+                $triangleSize = NULL;
+            }//end if
 
     //    $radius = $myCircle->getRadius();
     //    $length = $myRectangle->getLength();
@@ -131,12 +143,12 @@
                 include_once("Circle.php");
                 $myCircle = new Circle("Circle", $radius);
                 echo "<h2>" . $myCircle->getShape() . "</h2>";
-                echo "<h3>Area: " . $myCircle->resize() . "</h3>";
+                echo "<h3>Area: " . $myCircle->resize($circleSize) . "</h3>";
 
                 include_once("Triangle.php");
                 $myTriangle = new Triangle("Triangle", $base, $height);
                 echo "<h2>" . $myTriangle->getShape() . "</h2>";
-                echo "<h3>Area: " . $myTriangle->resize() . "</h3>";
+                echo "<h3>Area: " . $myTriangle->resize($triangleSize) . "</h3>";
 
                 ?>
             </span>
