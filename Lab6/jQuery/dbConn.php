@@ -24,13 +24,13 @@
      mysqli_close($dbConnection);
  }
 
- function selectFilmsWithNameStartingWith($searchString)
+ function selectEmployeesWith($searchString)
  {
      global $dbConnection;
      global $result;
-     $sqlStatement = "SELECT * FROM film WHERE title LIKE '";
-     $sqlStatement .= $searchString;
-     $sqlStatement .= "%';";
+
+     $sqlStatement = "SELECT * FROM employees WHERE first_name LIKE '$searchString%' OR last_name LIKE '$searchString%' LIMIT 0,10;";
+
      $result = mysqli_query($dbConnection,$sqlStatement);
      if(!$result)
      {
@@ -40,7 +40,7 @@
 
  }
 
- function fetchFilms()
+ function fetchEmployees()
  {
      global $dbConnection;
      global $result;

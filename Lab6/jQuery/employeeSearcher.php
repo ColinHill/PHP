@@ -4,7 +4,6 @@ header("Cache-Control: no-cache");
 $results = "";
 $searchExpr = "";
 
-
 if(!empty($_GET['searchExpr']))
 {
     $searchExpr = $_GET['searchExpr'];
@@ -13,12 +12,11 @@ if(!empty($_GET['searchExpr']))
 
     connectToDB();
 
-    selectFilmsWithNameStartingWith($searchExpr);
+    selectEmployeesWith($searchExpr);
 
-
-    while ($row = fetchFilms())
+    while ($row = fetchEmployees())
     {
-            $results .= $row['title'] . "<br/>";
+            $results .= $row['first_name'] . " " . $row['last_name'] . "<br/>";
     }
 
     closeDB();
