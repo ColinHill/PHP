@@ -1,22 +1,50 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: inet2005
- * Date: 12/14/14
- * Time: 10:16 PM
- */
+
 ?>
 
 <html>
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7/prototype.js"></script>
-    <script src="http://code.highcharts.com/adapters/prototype-adapter.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <title>High Chart Tutorial</title>
-</head>
 
-<body>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
 
-</body>
+        <script>
+            $(function () {
+                $('#container').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Fruit Consumption'
+                    },
+                    xAxis: {
+                        categories: ['Apples', 'Bananas', 'Oranges']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Fruit eaten'
+                        }
+                    },
+                    series: [{
+                        name: 'Jane',
+                        data: [1, 0, 4]
+                    }, {
+                        name: 'John',
+                        data: [5, 7, 3]
+                    }]
+                });
+            });
+        </script>
+
+        <title>HighCharts Tutorial</title>
+    </head>
+
+    <body>
+
+        <div id="container" style="width:100%; height:400px;"></div>
+
+
+
+    </body>
 
 </html>
