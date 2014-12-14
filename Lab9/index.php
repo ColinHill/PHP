@@ -1,5 +1,19 @@
 <?php
 
+include_once("dbConnect.php");
+
+$query = "SELECT COUNT(customer_id) FROM customer WHERE store_id = 1";
+$result = mysqli_query($db, $query);
+while ($row = mysqli_fetch_assoc($result)){
+    $StoreOne = $row['COUNT(customer_id)'];
+}//end while
+
+$query = "SELECT COUNT(customer_id) FROM customer WHERE store_id = 2";
+$result = mysqli_query($db, $query);
+while ($row = mysqli_fetch_assoc($result)){
+    $StoreTwo = $row['COUNT(customer_id)'];
+}//end while
+
 ?>
 
 <html>
@@ -15,22 +29,22 @@
                         type: 'bar'
                     },
                     title: {
-                        text: 'Fruit Consumption'
+                        text: 'Sakila Database'
                     },
                     xAxis: {
-                        categories: ['Apples', 'Bananas', 'Oranges']
+                        categories: ['Active Memberships Per Store']
                     },
                     yAxis: {
                         title: {
-                            text: 'Fruit eaten'
+                            text: 'Store'
                         }
                     },
                     series: [{
-                        name: 'Jane',
-                        data: [1, 0, 4]
+                        name: 'Store One',
+                        data: [<?php echo $StoreOne ?>]
                     }, {
-                        name: 'John',
-                        data: [5, 7, 3]
+                        name: 'Store Two',
+                        data: [<?php echo $StoreTwo ?>]
                     }]
                 });
             });
@@ -42,8 +56,6 @@
     <body>
 
         <div id="container" style="width:100%; height:400px;"></div>
-
-
 
     </body>
 
